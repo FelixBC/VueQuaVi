@@ -12,7 +12,7 @@
       <q-input class="border-2 border-black rounded-md w-full px-2 text-center"
                type="text"
                v-on:keyup.enter="addTaskHandler"
-               v-model="newTask" color="grey-3" label-color="teal" outlined label="Add task">
+               v-model="newItem" color="grey-3" label-color="teal" outlined label="Add task">
         <template v-slot:append>
           <q-icon name="search" color="teal"/>
         </template>
@@ -22,12 +22,12 @@
           <q-list bordered separator>
             <q-item clickable v-ripple>
               <q-item-section>
-                <p> {{ item.text }} </p>
-
-                <q-btn @on.click="" class="gt-xs" size="10px" flat dense round icon="delete"/>
+                {{item}}
+              </q-item-section>
+              <q-item-section>
+                <q-btn  @click="deleteElement(this.item.id)" class="gt-xs" size="10px" flat dense round icon="delete"/>
               </q-item-section>
             </q-item>
-
           </q-list>
         </li>
       </ol>
@@ -60,7 +60,7 @@ export default {
   computed: {
     newTaskObj() {
       return {
-        id: this.item.length + 1,
+        id: this.items.length + 1,
         name: this.newItem,
         complete: false,
       }
