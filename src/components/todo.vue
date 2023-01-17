@@ -18,14 +18,15 @@
         </template>
       </q-input>
       <ol>
-        <li v-for="item in items" :key="item.id">
+        <li v-for= "(item, index) in items" :key="index">
           <q-list bordered separator>
             <q-item clickable v-ripple>
               <q-item-section>
                 {{item}}
               </q-item-section>
               <q-item-section>
-                <q-btn  @click="deleteElement(this.item.id)" class="gt-xs" size="10px" flat dense round icon="delete"/>
+                <q-btn  @click="deleteElement(index)" class="gt-xs" size="10px" flat dense round icon="delete"/>
+
               </q-item-section>
             </q-item>
           </q-list>
@@ -54,7 +55,7 @@ export default {
       this.newItem = "";
     },
     deleteElement(index) {
-      this.items.splice(index,1)
+      this.items.splice(index, 1)
     }
   },
   computed: {
