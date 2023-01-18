@@ -26,15 +26,18 @@
               </q-item-section>
               <q-item-section>
                 <q-btn  @click="deleteElement(index)" class="gt-xs" size="10px" flat dense round icon="delete"/>
-
+                <q-btn @click="updateElement(index, this.newItem)" class="gt-xs" size="10px" flat dense round icon="edit"/>
+                <q-btn @click="moveElementToDone()" class="gt-xs" size="10px" flat dense round icon="done"/>
               </q-item-section>
             </q-item>
           </q-list>
         </li>
       </ol>
-
+      <div>
+      </div>
     </div>
   </div>
+
 </template>
 
 <script>
@@ -56,6 +59,9 @@ export default {
     },
     deleteElement(index) {
       this.items.splice(index, 1)
+    },
+    updateElement(index,newValue){
+      this.items.splice(index,1, newValue)
     }
   },
   computed: {
