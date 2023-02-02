@@ -1,14 +1,18 @@
 <template>
-  <div class="q-pa-md">
 
-    <div>
+  <b-container>
+    <div class="row">
+     <div class="col-sm-4" style="padding: 5%">
+    <b-col>
       <pre>
       <h4> Vue Your ToDo</h4>
       <h7>A todo app powered by Vue.js 3</h7>
-      </pre>
-    </div>
 
-    <div class="q-gutter-y-md column" @on.keyup.enter="" style="max-width: 300px">
+      </pre>
+    </b-col>
+
+   <div class="col-sm-4">
+    <b-col>
       <q-input class="border-2 border-black rounded-md w-full px-2 text-center"
                type="text"
                v-on:keyup.enter="addTaskHandler"
@@ -17,27 +21,36 @@
           <q-icon name="search" color="teal"/>
         </template>
       </q-input>
-      <ol>
-        <li v-for= "(item, index) in items" :key="index">
-          <q-list bordered separator>
-            <q-item clickable v-ripple>
-              <q-item-section>
-                {{item}}
-              </q-item-section>
-              <q-item-section>
-                <q-btn  @click="deleteElement(index)" class="gt-xs" size="10px" flat dense round icon="delete"/>
-                <q-btn @click="updateElement(index, this.newItem)" class="gt-xs" size="10px" flat dense round icon="edit"/>
-                <q-btn @click="moveElementToDone()" class="gt-xs" size="10px" flat dense round icon="done"/>
-              </q-item-section>
-            </q-item>
-          </q-list>
-        </li>
-      </ol>
-      <div>
-      </div>
-    </div>
-  </div>
+    </b-col>
+   </div>
+     </div>
+    <div class="col-sm-4" style="padding: 5%;">
+    <ol>
+      <p> Recently added ~ New </p>
+      <li v-for="(item, index) in items" :key="index">
+        <q-list bordered separator>
+          <q-item clickable v-ripple>
 
+            <q-item-section>
+              {{ item }}
+            </q-item-section>
+            <q-item-section>
+              <q-btn @click="deleteElement(index)" class="gt-xs" size="10px" flat dense round icon="delete"/>
+              <q-btn @click="updateElement(index, this.newItem)" class="gt-xs" size="10px" flat dense round
+                     icon="edit"/>
+              <q-btn @click="moveElementToDone()" class="gt-xs" size="10px" flat dense round icon="done"/>
+
+            </q-item-section>
+
+          </q-item>
+        </q-list>
+      </li>
+    </ol>
+    </div>
+     <div class="col-sm-4" style="padding: 5%;"> Done stuff </div>
+    </div>
+
+  </b-container>
 </template>
 
 <script>
@@ -60,8 +73,8 @@ export default {
     deleteElement(index) {
       this.items.splice(index, 1)
     },
-    updateElement(index,newValue){
-      this.items.splice(index,1, newValue)
+    updateElement(index, newValue) {
+      this.items.splice(index, 1, newValue)
     }
   },
   computed: {

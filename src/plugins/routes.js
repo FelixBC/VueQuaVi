@@ -2,7 +2,6 @@ import {createRouter, createWebHashHistory} from "vue-router";
 import MainMenu from "../components/MainMenu.vue";
 import Indexx from "../components/Indexx.vue";
 import About from "../components/About.vue";
-import Product1 from "../components/todo.vue";
 import todo from "../components/todo.vue";
 
 
